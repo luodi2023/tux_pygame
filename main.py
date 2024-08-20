@@ -16,23 +16,20 @@ running = True
 dt = 0
 clock = pygame.time.Clock()
 
-tux_play.set_surface()
+tux_play.animation_surface()
+tux_play.thread_bitmap()
 
 while running:
     for _event in pygame.event.get():
         if _event.type == pygame.QUIT:
             running = False
-            tux_play.thread_loop = False
-        if _event.type == pygame.KEYDOWN:
-            tux_play.is_run = True
-        tux_play.is_run = False
+            tux_play.thread1_loop = False
+            tux_play.thread2_loop = False
 
-    print(tux_play.is_run)
+    mouse = pygame.mouse.get_pressed()
 
-
-
-
-
+    if mouse[0]:
+        tux_play.play_attack()
 
 
     tux_play.play_rotate()
